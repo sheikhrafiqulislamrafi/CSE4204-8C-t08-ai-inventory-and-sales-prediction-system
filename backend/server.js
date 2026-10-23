@@ -1,13 +1,8 @@
-const express = require("express");
+// Legacy server.js - use app.js for the full implementation
+const { startServer } = require('./app');
 
-const app = express();
+const PORT = process.env.PORT || 8000;
 
-const PORT = 5000;
-
-app.get("/", (req, res) => {
-    res.send("Backend is running successfully!");
-});
-
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+if (require.main === module) {
+  startServer();
+}
