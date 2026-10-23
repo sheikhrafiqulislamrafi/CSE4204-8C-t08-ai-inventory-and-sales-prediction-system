@@ -1,4 +1,4 @@
-// Main API routes
+
 const express = require('express');
 const { query, queryOne, queryAll } = require('../config/db');
 const authMiddleware = require('../middleware/authMiddleware');
@@ -6,10 +6,10 @@ const authMiddleware = require('../middleware/authMiddleware');
 const router = express.Router();
 const { upload, parseOrdersCSV, parseProductsCSV, parseInvestmentsCSV } = require('../middleware/uploadMiddleware');
 
-// Apply auth middleware to all routes
+
 router.use(authMiddleware);
 
-// ============ Orders Routes ============
+
 
 router.get('/orders', async (req, res) => {
   try {
@@ -54,15 +54,15 @@ router.post('/orders/bulk-upload', upload.single('file'), async (req, res) => {
   try {
     let orders;
 
-    // Check if file was uploaded or JSON was sent
+
     if (req.file) {
-      // File upload with CSV parsing
+
       orders = parseOrdersCSV(req.file.buffer);
     } else if (req.body.data) {
-      // JSON data sent
+
       orders = typeof req.body.data === 'string' ? JSON.parse(req.body.data) : req.body.data;
     } else if (Array.isArray(req.body)) {
-      // Direct JSON array
+
       orders = req.body;
     } else {
       return res.status(400).json({ detail: 'No file or data provided' });
@@ -125,7 +125,7 @@ router.delete('/orders/:id', async (req, res) => {
   }
 });
 
-// ============ Products Routes ============
+
 
 router.get('/products', async (req, res) => {
   try {
@@ -222,7 +222,7 @@ router.delete('/products/:id', async (req, res) => {
   }
 });
 
-// ============ Investments Routes ============
+
 
 router.get('/investments', async (req, res) => {
   try {
@@ -317,7 +317,7 @@ router.delete('/investments/:id', async (req, res) => {
   }
 });
 
-// ============ Analytics Routes ============
+
 
 router.get('/analytics/summary', async (req, res) => {
   try {
@@ -601,7 +601,7 @@ router.get('/analytics/compare', async (req, res) => {
   }
 });
 
-// ============ Customer Routes ============
+
 
 router.get('/customers', async (req, res) => {
   try {
@@ -654,7 +654,7 @@ router.post('/customers/win-back/preview', async (req, res) => {
   }
 });
 
-// ============ Staff Routes ============
+
 
 router.get('/staff', async (req, res) => {
   try {
@@ -695,7 +695,7 @@ router.delete('/staff/:id', async (req, res) => {
   }
 });
 
-// ============ Settings Routes ============
+
 
 router.get('/settings', async (req, res) => {
   try {
@@ -728,7 +728,7 @@ router.put('/settings', async (req, res) => {
   }
 });
 
-// ============ Audit Log Routes ============
+
 
 router.get('/audit-log', async (req, res) => {
   try {
@@ -756,7 +756,7 @@ router.get('/audit-log', async (req, res) => {
   }
 });
 
-// ============ AI Routes ============
+
 
 router.post('/ai/insights', async (req, res) => {
   try {
@@ -785,7 +785,7 @@ router.post('/ai/query', async (req, res) => {
   }
 });
 
-// ============ Google Sheets Routes ============
+
 
 router.post('/sheets/connect', async (req, res) => {
   try {
@@ -808,7 +808,7 @@ router.post('/sheets/import', async (req, res) => {
   catch (err) { res.status(500).json({ detail: 'Import failed' }); }
 });
 
-// ============ Admin Routes ============
+
 
 router.get('/admin/shops', async (req, res) => {
   try {

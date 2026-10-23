@@ -1,4 +1,4 @@
-// Database configuration
+
 const { Pool } = require('pg');
 require('dotenv').config();
 
@@ -32,7 +32,7 @@ async function queryAll(text, params) {
   return res.rows;
 }
 
-// Helper functions for data manipulation
+
 function _roundMoney(value) {
   return Math.round((parseFloat(value || 0) + Number.EPSILON) * 100) / 100;
 }

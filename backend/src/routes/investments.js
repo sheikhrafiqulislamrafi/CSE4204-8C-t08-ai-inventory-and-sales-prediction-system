@@ -11,7 +11,7 @@ const { upload, parseInvestmentsExcel } = require('../middleware/uploadMiddlewar
 
 router.use(authMiddleware, requireOwner);
 
-// Get investments with pagination/filter
+
 router.get('/', async (req, res) => {
   try {
     const userId = req.user.user_id;
@@ -55,7 +55,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Create investment
+
 router.post('/', async (req, res) => {
   try {
     const userId = req.user.user_id;
@@ -83,7 +83,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Bulk upload investments
+
 router.post('/bulk-upload', upload.single('file'), async (req, res) => {
   try {
     let investments;
@@ -130,7 +130,7 @@ router.post('/bulk-upload', upload.single('file'), async (req, res) => {
   }
 });
 
-// Update investment
+
 router.put('/:id', async (req, res) => {
   try {
     const userId = req.user.user_id;
@@ -149,7 +149,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// Delete investment
+
 router.delete('/:id', async (req, res) => {
   try {
     const userId = req.user.user_id;

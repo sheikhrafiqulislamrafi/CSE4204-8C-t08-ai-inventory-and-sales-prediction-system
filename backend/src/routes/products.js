@@ -11,7 +11,7 @@ const { upload, parseProductsExcel } = require('../middleware/uploadMiddleware')
 
 router.use(authMiddleware);
 
-// Get all products
+
 router.get('/', async (req, res) => {
   try {
     const userId = req.businessOwnerId;
@@ -48,13 +48,13 @@ function getProductStatus(product) {
   return 'In Stock';
 }
 
-// Create product
+
 router.post('/', async (req, res) => {
   try {
     const userId = req.businessOwnerId;
     const { sku, name, category, supplier, unit_cost = 0, sell_price = 0, current_stock = 0, reorder_level = 0, notes } = req.body;
 
-    // Check SKU uniqueness
+
     if (sku) {
       const existing = await queryOne(
         'SELECT id FROM products WHERE user_id = $1 AND sku = $2',
@@ -79,7 +79,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Bulk upload products
+
 router.post('/bulk-upload', upload.single('file'), async (req, res) => {
   try {
     let products;
@@ -98,7 +98,7 @@ router.post('/bulk-upload', upload.single('file'), async (req, res) => {
       return res.status(400).json({ detail: 'Expected array of products' });
     }
 
-    // Validate required column
+
     if (!products[0]?.Name && !products[0]?.name) {
       return res.status(422).json({ detail: 'File must contain a Name column' });
     }
@@ -131,7 +131,7 @@ router.post('/bulk-upload', upload.single('file'), async (req, res) => {
 
       const notes = String(p.Notes || p.notes || '').trim();
 
-      // Check if product exists
+
       let existing = null;
       if (sku && sku.toLowerCase() !== 'nan' && sku) {
         existing = await queryOne(
@@ -183,7 +183,7 @@ router.post('/bulk-upload', upload.single('file'), async (req, res) => {
   }
 });
 
-// Update product
+
 router.put('/:id', async (req, res) => {
   try {
     const userId = req.businessOwnerId;
@@ -198,7 +198,7 @@ router.put('/:id', async (req, res) => {
       return res.status(404).json({ detail: 'Product not found' });
     }
 
-    // Check SKU uniqueness if changing
+
     if (sku && sku !== existing.sku) {
       const duplicate = await queryOne(
         'SELECT id FROM products WHERE user_id = $1 AND sku = $2 AND id != $3',
@@ -233,7 +233,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// Delete product
+
 router.delete('/:id', async (req, res) => {
   try {
     const userId = req.businessOwnerId;

@@ -23,7 +23,7 @@ function parseExcel(buffer, mappingFn) {
   return rows.map(row => mappingFn(row));
 }
 
-// --- Order mapping ---
+
 function mapOrderRow(row) {
   const phoneVal = row['Customer Phone'] || row['CustomerPhone'] || row.customer_phone || '';
   const nameVal = row['Customer Name'] || row['CustomerName'] || row.customer_name || '';
@@ -49,7 +49,7 @@ function mapOrderRow(row) {
   };
 }
 
-// --- Product mapping ---
+
 function mapProductRow(row) {
   return {
     name: String(row.Name || row.name || '').trim(),
@@ -64,7 +64,7 @@ function mapProductRow(row) {
   };
 }
 
-// --- Investment mapping ---
+
 function mapInvestmentRow(row) {
   return {
     date: row.Date || row.date,
@@ -76,7 +76,7 @@ function mapInvestmentRow(row) {
 
 function isExcelFile(buffer) {
   if (!buffer || buffer.length < 4) return false;
-  // Excel files start with ZIP signature (PK..)
+
   const sig = buffer.toString('ascii', 0, 2);
   return sig === 'PK';
 }

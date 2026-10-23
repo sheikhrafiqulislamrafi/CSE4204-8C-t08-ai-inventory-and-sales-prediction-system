@@ -2,28 +2,28 @@
  * Shared helpers — mirrors the Python reference implementation exactly.
  */
 
-/** Round to 2 decimals, like Python's round(value, 2) for money. */
+
 function roundMoney(value) {
   const n = parseFloat(value || 0);
   if (!isFinite(n)) return 0;
   return Math.round((n + Number.EPSILON) * 100) / 100;
 }
 
-/** Round to 1 decimal (used for margins / percentages). */
+
 function round1(value) {
   const n = parseFloat(value || 0);
   if (!isFinite(n)) return 0;
   return Math.round((n + Number.EPSILON) * 10) / 10;
 }
 
-/** Normalised lowercase text. */
+
 function normalizeText(value) {
   return (value || '').trim().toLowerCase();
 }
 
 const CANCELLED_STATUSES = ['cancelled', 'canceled', 'returned'];
 
-/** True when the status cancels/returns an order. */
+
 function isCancelledStatus(status) {
   return CANCELLED_STATUSES.includes(normalizeText(status));
 }
@@ -36,17 +36,17 @@ function orderSign(status) {
   return isCancelledStatus(status) ? -1 : 1;
 }
 
-/** Statuses that consume product stock (everything except cancelled/returned). */
+
 function isStockConsumingStatus(status) {
   return !isCancelledStatus(status);
 }
 
-/** profit = amount - product_cost (matches Python `_profit`). */
+
 function computeProfit(amount, deliveryCost, productCost = 0) {
   return roundMoney((parseFloat(amount) || 0) - (parseFloat(productCost) || 0));
 }
 
-/** Strip currency symbols / thousand separators from a spreadsheet cell. */
+
 function cleanAmount(value) {
   if (value === null || value === undefined || value === '') return 0;
   if (typeof value === 'number') return isFinite(value) ? value : 0;
@@ -55,7 +55,7 @@ function cleanAmount(value) {
   return isFinite(parsed) ? parsed : 0;
 }
 
-/** Convert a spreadsheet date cell into a "YYYY-MM-DD" string, or null. */
+
 function cleanDate(value) {
   if (value === null || value === undefined || value === '') return null;
 
@@ -64,7 +64,7 @@ function cleanDate(value) {
   }
 
   if (typeof value === 'number' && isFinite(value)) {
-    // Excel serial date (1900 epoch, with the well-known 1900 leap-year bug)
+
     const excelEpoch = Date.UTC(1899, 11, 30);
     const ms = excelEpoch + value * 86400000;
     const d = new Date(ms);
@@ -75,20 +75,20 @@ function cleanDate(value) {
   const raw = String(value).trim();
   if (!raw || raw.toLowerCase() === 'nan') return null;
 
-  // ISO-ish: 2024-01-05 / 2024-01-05T10:00:00
+
   const isoMatch = raw.match(/^(\d{4})-(\d{1,2})-(\d{1,2})/);
   if (isoMatch) {
     const [, y, mo, d] = isoMatch;
     return `${y}-${String(mo).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
   }
 
-  // Slash formats: 05/01/2024 (day-first) or 1/5/2024
+
   const slashMatch = raw.match(/^(\d{1,2})[/\-](\d{1,2})[/\-](\d{4})$/);
   if (slashMatch) {
     const [, a, b, y] = slashMatch;
     const day = parseInt(a, 10);
     const month = parseInt(b, 10);
-    // Prefer day-first (the reference is Bangladesh-based, dd/mm/yyyy).
+
     if (day > 12) {
       return `${y}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
     }
@@ -101,7 +101,7 @@ function cleanDate(value) {
   return null;
 }
 
-/** Today's date as "YYYY-MM-DD" (local time, matching Python's date.today()). */
+
 function todayString() {
   const now = new Date();
   const y = now.getFullYear();
@@ -110,7 +110,7 @@ function todayString() {
   return `${y}-${m}-${d}`;
 }
 
-/** N days ago as "YYYY-MM-DD" (local time). */
+
 function daysAgoString(days) {
   const d = new Date();
   d.setDate(d.getDate() - days);
@@ -120,7 +120,7 @@ function daysAgoString(days) {
   return `${y}-${m}-${day}`;
 }
 
-/** Days elapsed between a "YYYY-MM-DD" string and today (never negative). */
+
 function daysSince(dateStr) {
   if (!dateStr) return 0;
   const s = String(dateStr).slice(0, 10);
@@ -221,7 +221,7 @@ function customerAggregates(orders, inactiveDays = 30) {
   return rows.sort((a, b) => b.total_revenue - a.total_revenue);
 }
 
-/** Daily aggregation — matches Python `_daily_aggregates`. */
+
 function dailyAggregates(orders) {
   const daily = new Map();
   for (const order of orders) {
@@ -249,7 +249,7 @@ function dailyAggregates(orders) {
     }));
 }
 
-/** Product status label — matches Python `_product_status`. */
+
 function productStatus(product) {
   const stock = parseInt(product.current_stock || 0);
   const reorder = parseInt(product.reorder_level || 0);
@@ -258,7 +258,7 @@ function productStatus(product) {
   return 'In Stock';
 }
 
-/** Product serialization — matches Python `_product_to_dict`. */
+
 function productToDict(product) {
   return {
     id: product.id,
@@ -277,7 +277,7 @@ function productToDict(product) {
   };
 }
 
-/** Investment serialization — matches Python `_investment_to_dict`. */
+
 function investmentToDict(item) {
   return {
     id: item.id,
@@ -291,7 +291,7 @@ function investmentToDict(item) {
   };
 }
 
-/** Order serialization (snake_case, matches the Python SQLAlchemy columns). */
+
 function orderToDict(order) {
   return {
     id: order.id,

@@ -7,7 +7,7 @@ const router = express.Router();
 const { query, queryAll } = require('../config/db');
 const authMiddleware = require('../middleware/authMiddleware');
 const { requireOwner } = require('../middleware/authMiddleware');
-const { generateInsights, answerQuery, generateForecastInsights, generateRestockPlan, generatePLSummary, generateMonthlyExecutiveSummary, generateWinbackMessages } = require('../ai_service/ai_service');
+const { generateInsights, answerQuery, generateForecastInsights, generateRestockPlan, generatePLSummary, generateMonthlyExecutiveSummary, generateWinbackMessages } = require('../../../ai_service/ai_service');
 
 router.use(authMiddleware, requireOwner);
 

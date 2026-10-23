@@ -9,10 +9,10 @@ const { query, queryOne, queryAll, _roundMoney, _orderSign } = require('../confi
 const authMiddleware = require('../middleware/authMiddleware');
 const { upload, parseOrdersExcel } = require('../middleware/uploadMiddleware');
 
-// Apply auth middleware to all routes
+
 router.use(authMiddleware);
 
-// Get all orders with pagination and filtering
+
 router.get('/', async (req, res) => {
   try {
     const { search, status, start_date, end_date, page = 1, limit = 50 } = req.query;
@@ -51,12 +51,12 @@ router.get('/', async (req, res) => {
       paramIndex++;
     }
 
-    // Get total count
+
     const countSql = sql.replace('SELECT *', 'SELECT COUNT(*) as total');
     const totalResult = await queryOne(countSql, params);
     const total = parseInt(totalResult?.total || 0);
 
-    // Get paginated results
+
     sql += ` ORDER BY date DESC, id DESC LIMIT $${paramIndex} OFFSET $${paramIndex + 1}`;
     params.push(parseInt(limit), offset);
 
@@ -74,7 +74,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Create a single order
+
 router.post('/', async (req, res) => {
   try {
     const userId = req.businessOwnerId;
@@ -94,17 +94,17 @@ router.post('/', async (req, res) => {
       notes
     } = req.body;
 
-    // Get user's delivery cost setting
+
     const settings = await queryOne(
       'SELECT delivery_cost_per_order FROM user_settings WHERE user_id = $1',
       [userId]
     );
     const dc = delivery_cost !== undefined ? delivery_cost : (settings?.delivery_cost_per_order || 100);
 
-    // Calculate profit
+
     const profit = _roundMoney((amount || 0) - (product_cost || 0));
 
-    // Generate order_id if not provided
+
     let finalOrderId = order_id;
     if (!finalOrderId) {
       const timestamp = new Date().toISOString().replace(/[-:T.Z]/g, '').slice(0, 14);
@@ -112,7 +112,7 @@ router.post('/', async (req, res) => {
       finalOrderId = `ORD-${timestamp}-${uuidPart}`;
     }
 
-    // Check for duplicate order_id
+
     const existing = await queryOne(
       'SELECT id FROM orders WHERE user_id = $1 AND order_id = $2',
       [userId, finalOrderId]
@@ -135,20 +135,20 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Bulk upload orders
+
 router.post('/bulk-upload', upload.single('file'), async (req, res) => {
   try {
     let orders;
 
-    // Check if file was uploaded or JSON was sent
+
     if (req.file) {
-      // Parse Excel/CSV file
+
       orders = parseOrdersExcel(req.file.buffer, req.file.originalname);
     } else if (req.body.data) {
-      // JSON data sent
+
       orders = typeof req.body.data === 'string' ? JSON.parse(req.body.data) : req.body.data;
     } else if (Array.isArray(req.body)) {
-      // Direct JSON array
+
       orders = req.body;
     } else {
       return res.status(400).json({ detail: 'No file or data provided' });
@@ -158,7 +158,7 @@ router.post('/bulk-upload', upload.single('file'), async (req, res) => {
       return res.status(400).json({ detail: 'Expected array of orders' });
     }
 
-    // Validate required columns
+
     if (!orders[0]?.Amount && !orders[0]?.amount) {
       return res.status(422).json({ detail: 'File must contain an Amount column' });
     }
@@ -168,7 +168,7 @@ router.post('/bulk-upload', upload.single('file'), async (req, res) => {
 
     const userId = req.businessOwnerId;
 
-    // Get user's delivery cost setting
+
     const settings = await queryOne(
       'SELECT delivery_cost_per_order FROM user_settings WHERE user_id = $1',
       [userId]
@@ -182,7 +182,7 @@ router.post('/bulk-upload', upload.single('file'), async (req, res) => {
       try {
         const order = orders[i];
 
-        // Clean amount
+
         let amount = 0;
         const amountVal = order.Amount || order.amount || 0;
         if (typeof amountVal === 'string') {
@@ -193,16 +193,16 @@ router.post('/bulk-upload', upload.single('file'), async (req, res) => {
 
         if (amount <= 0) continue;
 
-        // Parse date
+
         let dateStr = order.Date || order.date;
         if (!dateStr) continue;
 
-        // Handle date parsing
+
         const dateObj = new Date(dateStr);
         if (isNaN(dateObj.getTime())) continue;
         dateStr = dateObj.toISOString().split('T')[0];
 
-        // Extract other fields
+
         const customerName = String(order['Customer Name'] || order.customer_name || '').replace(/^Name: /, '').trim();
         const customerPhone = String(order['Customer Phone'] || order.customer_phone || '').trim();
         const productName = String(order['Product Name'] || order.product || order.product_name || '').trim();
@@ -242,7 +242,7 @@ router.post('/bulk-upload', upload.single('file'), async (req, res) => {
       }
     }
 
-    // Get analytics context for AI
+
     const allOrders = await queryAll(
       'SELECT * FROM orders WHERE user_id = $1',
       [userId]
@@ -253,14 +253,14 @@ router.post('/bulk-upload', upload.single('file'), async (req, res) => {
     const uniquePhones = [...new Set(allOrders.map(o => o.customer_phone).filter(Boolean))];
     const aov = totalRev / nOrders || 0;
 
-    // Calculate at-risk customers
+
     const cutoff = new Date(Date.now() - 30 * 86400000).toISOString().split('T')[0];
     const atRisk = uniquePhones.filter(phone =>
       allOrders.some(o => o.customer_phone === phone && o.date && o.date < cutoff) &&
       !allOrders.some(o => o.customer_phone === phone && o.date && o.date >= cutoff)
     ).length;
 
-    // Top customers
+
     const customerSpent = {};
     for (const o of allOrders) {
       if (o.customer_phone) {
@@ -291,7 +291,7 @@ router.post('/bulk-upload', upload.single('file'), async (req, res) => {
   }
 });
 
-// Update order
+
 router.put('/:id', async (req, res) => {
   try {
     const userId = req.businessOwnerId;
@@ -312,7 +312,7 @@ router.put('/:id', async (req, res) => {
       notes
     } = req.body;
 
-    // Check if order exists
+
     const existing = await queryOne(
       'SELECT * FROM orders WHERE id = $1 AND user_id = $2',
       [orderId, userId]
@@ -321,7 +321,7 @@ router.put('/:id', async (req, res) => {
       return res.status(404).json({ detail: 'Order not found' });
     }
 
-    // Calculate new profit if amount or product_cost changed
+
     const newAmount = amount !== undefined ? amount : existing.amount;
     const newProductCost = product_cost !== undefined ? product_cost : existing.product_cost;
     const newDeliveryCost = delivery_cost !== undefined ? delivery_cost : existing.delivery_cost;
@@ -356,7 +356,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// Delete order
+
 router.delete('/:id', async (req, res) => {
   try {
     const userId = req.businessOwnerId;

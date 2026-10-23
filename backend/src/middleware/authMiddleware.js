@@ -1,4 +1,4 @@
-// JWT authentication and database-backed business tenant resolution.
+
 const jwt = require('jsonwebtoken');
 const { queryOne } = require('../config/db');
 
