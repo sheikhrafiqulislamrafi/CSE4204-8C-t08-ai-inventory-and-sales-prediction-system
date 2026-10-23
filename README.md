@@ -1,135 +1,217 @@
-# 🤖 AI Inventory & Sales Prediction System
+# myShop AI
+> **AI Inventory & Sales Prediction System** — Smart web-based platform for inventory management, sales tracking, and AI-driven decision-making.
+>
+> **Official Team:** CSE4204-8C-T08 | **Section:** 8C | **Team Leader:** Sheikh Rafiqul Islam Rafi
 
-> A smart web-based platform designed to help businesses manage inventory, track sales, and improve decision-making using Artificial Intelligence.
+![myShop AI Dashboard](Screenshots/Dashboard.png)
 
----
+## 1. Project Description
+The AI Inventory & Sales Prediction System is an intelligent, cloud-based business management platform engineered to modernize traditional warehouse keeping and transactional logging. By integrating decoupled full-stack web architectures with machine learning models and dynamic APIs, the system provides a unified operational surface to monitor real-time stock availability, record daily revenue streams, map micro-trends, and generate interactive next-month sales projection curves.
 
-## 🚀 Project Description
+The platform helps businesses:
+- ✅ Reduce Overstocking & Stock Shortages
+- 📈 Analyze Product Performance
+- 💹 Monitor Revenue & Sales Trends
+- 💡 Generate Intelligent Business Insights
+- 🗓️ Improve Business Planning & Decision-Making
 
-The **AI Inventory & Sales Prediction System** is an intelligent, cloud-based business management platform engineered to modernize traditional warehouse keeping and transactional logging. Conventional inventory systems act as passive, historical repositories that record events after they occur. This platform transforms data collection into a forward-looking operational asset. 
-
-By integrating decoupled full-stack web architectures with machine learning models and dynamic APIs, the system provides a unified operational surface to monitor real-time stock availability, record daily revenue streams, map micro-trends, and generate interactive next-month sales projection curves.
-
-### The system helps businesses:
-* ✅ **Reduce Overstocking & Stock Shortages:** Mitigates immediate operational friction, emergency reorder premiums, and capital confinement.
-* 📈 **Analyze Product Performance:** Tracks baseline sales volumes, margins, and movement patterns over time.
-* 💹 **Monitor Revenue & Sales Trends:** Visualizes real-time gross metrics and historical performance lines cleanly.
-* 💡 **Generate Intelligent Business Insights:** Translates raw transaction matrices into strategic textual summaries and reordering directions.
-* 🗓️ **Improve Business Planning & Decision-Making:** Removes dependency on standard heuristics or guesswork, replacing it with empirical data.
-
-The platform provides a **responsive and user-friendly interface** for both desktop and mobile users.
-
----
-## 👥 Team Information
-
+**Team Information**
 | Field | Details |
-|-------|---------|
-| **Official Team Name** | CSE4204-8C-T08 |
-| **Section** | 8C |
-| **Team Leader** | Sheikh Rafiqul Islam Rafi |
+|---|---|
+| Official Team Name | CSE4204-8C-T08 |
+| Section | 8C |
+| Team Leader | Sheikh Rafiqul Islam Rafi |
+| Team Members | Rafi (11220320922), Antar Sadhu (11220320940), Md. Shajjad Mahmud (11220320928), Arjun Mirbor (11220320971) |
 
-### Team Members
-| Serial | Name | Student ID |
-|--------|------|------------|
-| 1 | Sheikh Rafiqul Islam Rafi | 11220320922 |
-| 2 | Antar Sadhu | 11220320940 |
-| 3 | Md. Shajjad Mahmud | 11220320928 |
-| 4 | Arjun Mirbor | 11220320971 |
----
+## 2. Problem Statement
+Small and medium business owners in emerging markets often rely on scattered spreadsheets or pen-and-paper to manage daily sales. This manual process makes it difficult to track profitability, identify at-risk customers, or gain actionable business insights without hiring technical experts. 
 
-## 🎯 Project Objectives
+## 3. Importance of the Problem
+Without proper analytics, businesses lose money due to hidden inefficiencies. They fail to identify which products are actually driving profit, when customers stop buying, or if their daily margins are shrinking. A solution to this problem democratizes data intelligence, empowering millions of small business owners to grow sustainably.
 
-To meet academic and industry standard requirements, our platform guarantees the following system milestones:
-1.  **Unified Inventory Management:** Engineering a structured, secure, and user-friendly interface to track granular product details, categories, costs, and localized stock status.
-2.  **Real-Time Sales Ledger:** Constructing automated transaction workflows that instantaneously adjust downstream asset volumes upon item checkout to prevent manual entry errors.
-3.  **AI-Driven Forecasting:** Embedding predictive analytics to evaluate historical sales logs and project next-month forward demand curves.
-4.  **Proactive Automated Alerting:** Designing warning hooks that trigger immediate visual indicators on front-end dashboards when stock counts fall below custom low-stock thresholds.
-5.  **Cloud-Scale Infrastructure:** Architecting a high-availability server layout capable of sustaining concurrent queries without an exponential rise in interface latency.
+## 4. Project Objectives
+To meet academic and industry standard requirements, the platform guarantees the following system milestones:
 
----
+- **Unified Inventory Management**: Structured, secure interface to track granular product details, categories, costs, and localized stock status.
+- **Real-Time Sales Ledger**: Automated transaction workflows that instantly adjust downstream asset volumes upon item checkout.
+- **AI-Driven Forecasting**: Predictive analytics evaluating historical sales logs to project next-month forward demand curves.
+- **Proactive Automated Alerting**: Warning hooks triggering visual indicators when stock counts fall below custom low-stock thresholds.
+- **Cloud-Scale Infrastructure**: High-availability server layout sustaining concurrent queries without exponential interface latency.
 
-## ✨ Proposed Features & System Specification
+## 5. System Architecture
+The project is divided into two main parts: a **Frontend** (React) and a **Backend** (Node.js / Express).
 
-### 🔐 Authentication System
-* **FR-01 (User Registration):** Captures business emails, salted credentials, and defined user parameters.
-* **FR-02 (Secure Login):** Authenticates user sessions against cryptographic database hashes to establish secure session tokens (JWT).
-* **FR-03 (Token Invalidation):** Explicitly clears active session components and state values on user logout commands.
-* **FR-04 (User Profiles):** Allows authenticated staff members to safely modify profile metadata and preferences.
-* **FR-05 (Role-Based Access Control):** Restricts administrative control panels, configurations, and user listings exclusively to the Admin role.
+### Folder Architecture
+- **Sales Dashboard**: See your Revenue, Profit, Total Orders, and Profit Margin at a glance.
+- **Manage Orders**: Add, edit, delete, and search sales orders just like you would in Excel.
+- **Role-Based Access**: Create accounts for Owners, Admins, and Staff with different permissions.
+- **AI Business Insights**: Generate on-demand, bilingual (Bengali & English) executive summaries analyzing sales trends, at-risk customers, and overarching business health, powered entirely by Gemma 4.
+- **Automated Daily Emails**: Every day at your configured time, the system automatically sends a summary email with AI insights.
+- **Dynamic Pricing AI**: Intelligent pricing recommendations powered by Gemma 4, analyzing sales velocity and stock buffers to maximize margin and clear dead stock.
+- **AI Restock Planner**: A hybrid approach using deterministic Python math to calculate exact purchase quantities and stockout dates, combined with Gemma 4 to generate a strategic, bilingual executive summary of the weekly purchase plan.
+- **Google Sheets Sync**: (Optional) Connect a Google Sheet to push or pull orders directly to the web app, plus many more hidden features to streamline your business!
 
-### 📦 Inventory Management
-* **FR-06 (Catalog Initialization):** Provides staff with UI forms to register fresh product titles, retail pricing, baseline tracking, and initial count logs.
-* **FR-07 (Attribute Management):** Facilitates direct updates to active product profiles while maintaining referential integrity across the system data layer.
-* **FR-08 (Soft-Deletion Protection):** Implements flags to hide obsolete catalog rows without breaking linked historical sales logs.
-* **FR-09 (Manual Adjustments):** Allows manual stock volume overrides to account for inbound supplier shipments or structural audits.
+### 🌟 Feature Gallery
 
-### 💰 Sales Management
-* **FR-10 (Automated Sychronization):** Backend automatically intercepts final checkout receipts to programmatically decrement inventory levels without latency.
-* **FR-12 (Sales Recording):** Compiles financial transaction blocks, saving aggregated item costs, quantities, and timing metrics.
-* **FR-13 (CRM Tracking):** Offers optional fields to map customer identity attributes to distinct invoices for marketing analysis.
+**Secure Authentication & Onboarding**
+![Login Page](Screenshots/Login%20Page.png)
 
-### 📊 Dashboard & Analytics
-* **FR-14 (Query Operations):** Provides fast text filters and dynamic categorization tools across item listings and receipt tables.
-* **FR-15 (Visual Overview Dashboard):** Compiles active database metrics into responsive time-series charts, revenue summaries, and quick performance cards.
+**AI Business Insights & Daily Reports**
+![AI Insights](Screenshots/AI%20%20Insights.png)
 
-### 🤖 AI Features
-* **FR-16 (AI Sales Prediction):** Processes historical data patterns through intelligent models to render reliable future month sales projection graphics.
-* **FR-17 (Smart Inventory Recommendations):** Leverages purchase frequencies and historical asset lifecycles to calculate ideal product reordering milestones.
-* **FR-18 (AI-Generated Business Insights):** Evaluates transaction layers to supply brief textual summaries highlighting an enterprise's top-growth avenues.
+**Dynamic Pricing AI**
+![Pricing AI](Screenshots/Dynamic%20Priceing%20AI.png)
 
-### 📝 Report Generation
-* **FR-19 (Tabular Reports Engine):** Formats active metrics, performance parameters, and remaining stock inventories into exportable CSV or PDF documents.
-* **FR-20 (Persistence Layer Maintenance):** Maps all business transactions, event history chains, and entity changes directly to cloud non-volatile storage collections.
+**AI Restock Planner**
+![Restock AI](Screenshots/Restock%20AI.png)
 
----
+**Comprehensive Financials**
+![Monthly Report](Screenshots/Monthly%20Report.png)
 
-## 🛠 Technology Stack
+## 4. Proposed Solution
+**myShop AI** bridges this gap by transforming a standard spreadsheet workflow into an enterprise-level AI analytics platform. It provides an intuitive, easy-to-use dashboard that automates reporting and gives actionable advice.
 
-### Frontend
-![React](https://img.shields.io/badge/React.js-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+**Key Features:**
+- **Sales Dashboard**: See your Revenue, Profit, Total Orders, and Profit Margin at a glance.
+- **Manage Orders**: Add, edit, delete, and search sales orders just like you would in Excel.
+- **Role-Based Access**: Create accounts for Owners, Admins, and Staff with different permissions.
+- **AI Business Insights**: Generate on-demand, bilingual (Bengali & English) executive summaries analyzing sales trends, at-risk customers, and overarching business health, powered entirely by Gemma 4.
+- **Automated Daily Emails**: Every day at your configured time, the system automatically sends a summary email with AI insights.
+- **Dynamic Pricing AI**: Intelligent pricing recommendations powered by Gemma 4, analyzing sales velocity and stock buffers to maximize margin and clear dead stock.
+- **AI Restock Planner**: A hybrid approach using deterministic Python math to calculate exact purchase quantities and stockout dates, combined with Gemma 4 to generate a strategic, bilingual executive summary of the weekly purchase plan.
+- **Google Sheets Sync**: (Optional) Connect a Google Sheet to push or pull orders directly to the web app, plus many more hidden features to streamline your business!
 
-### Backend
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
-![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
+## 7. Gemma 4 Integration
+This project uses the official Google AI APIs (via the `google-genai` SDK) to communicate exclusively with **Gemma 4**.
 
-### Database
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
+- **How it works**: The backend securely holds the `GOOGLE_AI_STUDIO_KEY`. When generating a report, checking pricing, or planning restocks, the backend summarizes structured sales data (Revenue, Orders, Velocity, Days-of-Stock-Left) and prompts Gemma 4 to analyze the business's health.
+- **Primary AI Features**: Gemma 4 is the sole intelligence engine behind the "Insights" page, the **Dynamic Pricing Optimizer**, and the **AI Restock Planner**.
 
-### AI Integration
-![OpenAI](https://img.shields.io/badge/OpenAI_API-412991?style=for-the-badge&logo=openai&logoColor=white)
-![Google Gemini](https://img.shields.io/badge/Gemini_API-4285F4?style=for-the-badge&logo=google&logoColor=white)
+## 5. System Architecture
+The project is divided into two main parts: a **Frontend** (React) and a **Backend** (Node.js / Express).
 
-### Deployment
-
-| Service | Purpose |
-| :--- | :--- |
-| **Vercel** | Frontend Hosting & Global Edge Distribution |
-| **Render / Railway** | Decoupled API Server Lifecycle Management |
-| **MongoDB Atlas / Supabase** | High-Availability Cloud Database & Replication Clusters |
-
----
-
-## 📂 Repository Structure
-
+### Folder Architecture
 ```text
-ai-inventory-sales-system/
-├── frontend/                 # Client UI application (Hosted on Vercel)
-│   ├── public/               # Asset management, icons, manifest fields
-│   └── src/
-│       ├── components/       # Reusable UI widgets (Charts, Tables, Low-Stock Widgets)
-│       ├── pages/            # Layout Views (Dashboard, Inventory Catalog, Login, Sales Gateway)
-│       ├── context/          # Application global context states (AuthContext, ThemeContext)
-│       └── hooks/            # Custom API sync and state validation hooks
-├── backend/                  # Business API Server Engine (Hosted on Render/Railway)
-│   └── src/
-│       ├── config/           # Environment profiles and cloud database connections
-│       ├── controllers/      # Route logic handlers for user and tracking operations
-│       ├── models/           # Data definitions and schemas (User, Product, Transaction)
-│       ├── routes/           # Network endpoint map trees (AuthRoutes, InventoryRoutes)
-│       └── middleware/       # JWT interceptors and role verification blocks
-├── ai-engine/                # Analytics engine, data pipelines, and machine learning scripts
-│   ├── models/               # Saved mathematical algorithms or pipeline configurations
-│   └── pipelines/            # Aggregation processors and prompt text synthesizers
-└── docs/                     # SRS Documents, architectural diagrams, and project assets
+myShop-AI/
+├── ai_service/              # Gemma 4 / Google AI integration (ai_service.js, prompts.js)
+├── backend/                 # Node.js / Express Backend
+│   ├── src/                 # Backend source (routes, controllers, models)
+│   ├── app.js               # Main application entry point
+│   ├── server.js            # Server starter
+│   ├── package.json         # Backend dependencies
+│   └── .env                 # Environment config
+├── frontend/                # React Frontend (Vite)
+│   ├── src/                 # React source (components, pages, contexts, services)
+│   ├── package.json         # Node dependencies
+│   ├── index.html           # Entry HTML
+│   └── vite.config.js / etc # Vite config
+├── database/                # Database files / migrations
+├── demo_data/               # Sample CSV data for bulk upload
+├── Screenshots/             # Project screenshots
+└── README.md                # Project documentation
+```
+
+## 6. Technical Implementation
+- **Frontend**: Built with React and Vite for fast performance. Uses `Recharts` for displaying beautiful Revenue and Profit charts, and natively renders rich Markdown (bolding, etc.) for all Gemma 4 summaries.
+- **Backend**: Built with Node.js / Express (`backend/app.js`, `backend/src/`).
+- **Database**: Uses a database configured via `database/` folder (check backend `.env` for connection details).
+- **AI Integration**: `ai_service/` handles Gemma 4 prompts and Google AI Studio API calls (`google-genai`).
+- **Authentication**: Uses JWT managed in backend source.
+- **Background Tasks**: Scheduled tasks can be handled via backend services or external cron (check `backend/src/` for email/report scheduling).
+- **AI-Assisted Development**: See [How Codex & GPT-5.6 were used](How_Codex_&_GPT-5.6_were_used.md) for details on the implementation process.
+
+## 7. Challenges Encountered
+- **Prompt Engineering for Bengali**: Ensuring Gemma 4 generated high-quality, professional business advice in Bengali required careful prompt tuning, as direct translations often sounded unnatural.
+- **Data Formatting for AI**: Feeding raw tabular data into the LLM resulted in hallucinations. We overcame this by pre-calculating KPIs (Revenue, AOV, Profit) in Python and passing a structured summary to the model. We also ensured accuracy by strictly handling cancelled and returned orders in the Python layer before sending net figures to Gemma.
+
+## 8. Expected Impact
+By making AI-driven analytics accessible and affordable, myShop AI can help thousands of small shop owners optimize their inventory, retain customers, and increase their daily profit margins. 
+
+## 9. Future Improvements
+- **Voice-First Order Entry**: Let shop owners speak an order in Bengali and have Gemma 4 extract a structured sale, so even non-typists can log sales at the counter.
+- **Two-Way Google Sheets Sync**: Implement real-time, bidirectional synchronization between the web app and Google Sheets.
+- **Mobile Application**: Build a dedicated mobile app for store staff to input sales directly from their phones.
+
+## 9. Technology Stack
+
+**Frontend**
+- React + TailwindCSS
+
+**Backend**
+- Node.js + Express.js
+
+**Database**
+- PostgreSQL / MongoDB (configured via `database/` and `backend/.env`)
+
+**AI Integration**
+- Google Gemini (via `google-genai` SDK in `ai_service/`)
+
+**Deployment**
+- Vercel — Frontend Hosting & Global Edge Distribution
+- Render / Railway — Decoupled API Server Lifecycle Management
+- MongoDB Atlas / Supabase — High-Availability Cloud Database & Replication Clusters
+
+---
+
+## 💻 Repository Requirements
+
+### 1. Dependencies
+- **Backend**: Node.js 18+. All dependencies listed in `backend/package.json`.
+- **Frontend**: Node.js 20+. All dependencies listed in `frontend/package.json`.
+- **AI Key**: `GOOGLE_AI_STUDIO_KEY` required in `backend/.env` (see `backend/.env.example`).
+
+### 2. Configuration Files
+The project relies on environment variables. Copy `backend/.env.example` to `backend/.env` and fill in your keys:
+```env
+# Required for Gemma 4 AI features
+GOOGLE_AI_STUDIO_KEY="AIzaSy..."
+```
+
+### 3. Installation Instructions
+
+**Step A: Clone the Repository**
+First, download the code and navigate into the newly created project folder:
+```powershell
+git clone https://github.com/sheikhrafiqulislamrafi/CSE4204-8C-t08-ai-inventory-and-sales-prediction-system.git
+cd CSE4204-8C-t08-ai-inventory-and-sales-prediction-system
+```
+
+**Step B: Backend Setup**
+Open a terminal in the main project folder and run:
+```powershell
+cd backend
+npm install
+node server.js
+# or: node app.js
+```
+
+**Step C: Frontend Setup**
+Open a new terminal in the main project folder and run:
+```powershell
+cd frontend
+npm install
+npm run dev
+```
+
+### 4. Usage Guide
+1. **Getting Started**: Open `http://localhost:5173` in your browser and click **Register** to create your Owner account.
+2. **Hydrate with Data**: Instantly populate your database to test the AI features by uploading the 3 sample CSV files provided in the `demo_data/` folder:
+   - **Products**: Navigate to the **Products** page, click the **Bulk Upload** tab, and upload `demo_data/products.csv`.
+   - **Investments**: Navigate to the **Investments** page, click the **Bulk Upload** tab, and upload `demo_data/investments.csv`.
+   - **Sales**: Navigate to the **Sales** page, click the **Bulk Upload** tab, and upload `demo_data/sales.csv`. (The AI will instantly analyze your imported sales data!)
+3. **Explore the Dashboard**: Head to the **Dashboard** to watch your Revenue and Profit charts update in real-time based on your sales.
+4. **Generate AI Insights**: Go to the **Insights** page and click "Generate Full Report" to receive a comprehensive, bilingual analysis of your business health from Gemma 4.
+5. **Optimize with Dynamic Pricing**: On the **Products** page, hit the **"Pricing AI"** button. Gemma 4 will analyze your sales velocity and stock buffers to suggest markup opportunities or clearance discounts.
+6. **Plan AI Restocks**: Also on the **Products** page, click **"Restock AI"**. Gemma 4 cross-references your 30-day sales velocity and current inventory to generate a precise 14-day purchase plan (what to buy, what to skip).
+7. **Automate Daily Reports**: Finally, go to **Settings** and schedule an automated daily AI email so you wake up to fresh insights every morning!
+
+### 5. Troubleshooting
+If you encounter errors setting up the project locally, try these common fixes:
+
+- **`express` / `node` not recognized**: Ensure Node.js 18+ is installed (`node -v`). Then run `npm install` inside `backend/` and `frontend/`.
+- **Backend won't start**: Check `backend/.env` exists and contains `GOOGLE_AI_STUDIO_KEY`. Verify `backend/app.js` / `server.js` runs (`node server.js`).
+- **Frontend can't connect**: Make sure the backend server is running and `frontend/package.json` dependencies installed (`npm install`). Check `frontend/src/services/` for the correct backend URL/port.
+- **AI Insights return errors**: Confirm the `GOOGLE_AI_STUDIO_KEY` is valid and has quota. Check `ai_service/ai_service.js` for API errors.
+- **Database issues**: Verify `database/` folder has proper connection/config and backend `.env` points correctly.
+
+For more help, see the project documentation or check `backend/src/` and `frontend/src/` for setup comments.
