@@ -2,12 +2,38 @@
 const { Pool } = require('pg');
 require('dotenv').config();
 
-const pool = new Pool({
+// Render/Railway provide a single DATABASE_URL connection string.
+// Parse it into host/port/user/password/database so the pool can use it.
+function parseDatabaseUrl(url) {
+  if (!url) return null;
+  try {
+    const parsed = new URL(url);
+    return {
+      host: parsed.hostname,
+      port: parseInt(parsed.port || '5432', 10),
+      user: decodeURIComponent(parsed.username || 'postgres'),
+      password: decodeURIComponent(parsed.password || ''),
+      database: (parsed.pathname || '').replace(/^\//, '') || 'myshop',
+      ssl: parsed.protocol === 'postgres:' && parsed.hostname !== 'localhost'
+        ? { rejectUnauthorized: false }
+        : undefined,
+    };
+  } catch {
+    return null;
+  }
+}
+
+const urlConfig = parseDatabaseUrl(process.env.DATABASE_URL);
+const poolConfig = urlConfig || {
   host: process.env.PGHOST || 'localhost',
   port: process.env.PGPORT || 5432,
   user: process.env.PGUSER || 'postgres',
   password: process.env.PGPASSWORD || 'postgres',
   database: process.env.PGDATABASE || 'myshop',
+};
+
+const pool = new Pool({
+  ...poolConfig,
   max: 20,
   idleTimeoutMillis: 30000,
   connectionTimeoutMillis: 2000,
