@@ -1,0 +1,101 @@
+Name,SKU,Category,Supplier,Unit Cost,Sell Price,Current Stock,Reorder Level
+Surge Protector,SKU-1001,Networking,Techland,1100,1350,187,12
+Xiaomi Mechanical Keyboard,SKU-1002,Electronics,Ryans Computers,5040,6800,97,7
+A4Tech Wireless Mouse,SKU-1003,Office Supplies,Techland,3660,4800,160,15
+A4Tech HDMI Cable (2m),SKU-1004,Electronics,UCC,780,1050,54,13
+Razer Wireless Earbuds,SKU-1005,Networking,Computer Village,6470,8050,101,5
+Asus Ethernet Cable (5m),SKU-1006,Storage,UCC,690,800,183,17
+Headphones with Mic,SKU-1007,Office Supplies,Computer Village,5850,7900,150,5
+LG Ethernet Cable (5m),SKU-1008,Networking,UCC,310,350,11,6
+Samsung Power Strip (6 Port),SKU-1009,Office Supplies,UCC,910,1150,20,17
+Netgear SSD 500GB,SKU-1010,Networking,Ryans Computers,7060,8650,56,19
+Xiaomi SSD 1TB,SKU-1011,Office Supplies,Computer Village,8190,11300,139,7
+Logitech UPS 650VA,SKU-1012,Networking,UCC,3540,4500,185,6
+HP UPS 650VA,SKU-1013,Electronics,Ryans Computers,4860,6100,130,15
+Logitech Surge Protector,SKU-1014,Electronics,Star Tech,650,850,161,14
+HP HDMI Cable (2m),SKU-1015,Storage,Ryans Computers,230,300,72,18
+Razer Surge Protector,SKU-1016,Networking,UCC,470,600,64,8
+Xiaomi Bluetooth Speaker,SKU-1017,Storage,Techland,5340,6500,176,13
+Ethernet Cable (5m),SKU-1018,Storage,Ryans Computers,450,550,77,20
+UPS 650VA,SKU-1019,Electronics,Computer Village,3930,5300,151,12
+Wi-Fi Range Extender,SKU-1020,Electronics,Computer Village,2920,3350,93,18
+27-inch Monitor,SKU-1021,Office Supplies,Star Tech,18830,26150,109,14
+Laptop Stand,SKU-1022,Electronics,Star Tech,810,1050,152,14
+Dell A4 Paper Pack (500 sheets),SKU-1023,Storage,Techland,450,550,59,14
+Asus External HDD 1TB,SKU-1024,Storage,UCC,5000,6400,148,18
+Razer SSD 1TB,SKU-1025,Office Supplies,Techland,3660,4300,56,7
+Anker Headphones with Mic,SKU-1026,Office Supplies,Techland,1480,1950,50,10
+Xiaomi Bluetooth Speaker,SKU-1027,Networking,Computer Village,1200,1500,45,17
+Wi-Fi Range Extender,SKU-1028,Networking,Techland,1680,2000,146,16
+Logitech Ethernet Cable (10m),SKU-1029,Office Supplies,Techland,310,400,73,16
+Dell Bluetooth Speaker,SKU-1030,Storage,Ryans Computers,1010,1400,184,19
+A4Tech Surge Protector,SKU-1031,Office Supplies,UCC,1140,1350,166,20
+Gaming Mouse,SKU-1032,Office Supplies,Techland,3770,4700,69,14
+Xiaomi LED Desk Lamp,SKU-1033,Electronics,Computer Village,3270,4350,32,8
+Dell HDMI Cable (2m),SKU-1034,Networking,UCC,360,450,92,5
+Logitech HDMI Cable (2m),SKU-1035,Accessories,Computer Village,700,800,110,9
+Netgear Type-C to USB Cable,SKU-1036,Networking,Ryans Computers,190,200,131,12
+HP 24-inch Monitor,SKU-1037,Storage,Ryans Computers,25620,31150,101,13
+Xiaomi Mousepad (Large),SKU-1038,Networking,Techland,1420,1700,195,14
+Dell Surge Protector,SKU-1039,Electronics,Computer Village,670,800,154,13
+A4Tech USB-C Hub,SKU-1040,Accessories,Star Tech,3200,3950,22,13
+Samsung Surge Protector,SKU-1041,Electronics,Computer Village,1440,1950,160,18
+Xiaomi Ethernet Cable (5m),SKU-1042,Networking,Computer Village,370,450,42,17
+Mechanical Keyboard,SKU-1043,Electronics,Star Tech,4800,5650,162,19
+Netgear A4 Paper Pack (500 sheets),SKU-1044,Networking,Star Tech,460,600,97,20
+HP USB-C Hub,SKU-1045,Storage,UCC,2090,2800,14,19
+Xiaomi Router Dual Band,SKU-1046,Storage,Techland,4370,5700,13,11
+LG Webcam 1080p,SKU-1047,Electronics,Computer Village,4000,5550,132,7
+Bluetooth Speaker,SKU-1048,Electronics,Techland,6360,8550,21,17
+Anker 24-inch Monitor,SKU-1049,Networking,Ryans Computers,25100,30900,122,20
+Anker Flash Drive 64GB,SKU-1050,Electronics,Ryans Computers,910,1200,62,20
+Samsung Headphones with Mic,SKU-1051,Accessories,Computer Village,7740,9450,133,7
+Corsair Power Strip (6 Port),SKU-1052,Accessories,Computer Village,640,800,99,17
+Netgear Mechanical Keyboard,SKU-1053,Networking,Ryans Computers,1490,1900,96,18
+Gigabyte Wireless Earbuds,SKU-1054,Electronics,Techland,1440,1650,74,18
+A4Tech Wireless Mouse,SKU-1055,Storage,Techland,3350,4150,169,18
+24-inch Monitor,SKU-1056,Office Supplies,Ryans Computers,30730,37350,157,5
+Corsair Power Strip (6 Port),SKU-1057,Storage,UCC,800,1100,46,9
+Netgear Wireless Earbuds,SKU-1058,Accessories,UCC,7590,10400,50,6
+Webcam 1080p,SKU-1059,Office Supplies,Computer Village,2410,2950,141,11
+Razer Mousepad (Large),SKU-1060,Electronics,Star Tech,300,400,13,11
+Logitech UPS 650VA,SKU-1061,Electronics,Computer Village,4210,5200,51,14
+Dell Wi-Fi Range Extender,SKU-1062,Storage,Computer Village,4840,6150,48,12
+Ethernet Cable (5m),SKU-1063,Networking,UCC,640,750,89,6
+LG Power Strip (6 Port),SKU-1064,Electronics,Techland,630,750,136,9
+Ethernet Cable (10m),SKU-1065,Accessories,Techland,550,750,16,14
+Netgear Ethernet Cable (5m),SKU-1066,Storage,Star Tech,770,1050,57,7
+Samsung External HDD 1TB,SKU-1067,Office Supplies,Computer Village,6810,9350,13,14
+Corsair USB-C Hub,SKU-1068,Electronics,Computer Village,3460,4800,182,20
+Gigabyte USB-C Hub,SKU-1069,Networking,Star Tech,2110,2900,186,10
+Xiaomi Flash Drive 64GB,SKU-1070,Office Supplies,Star Tech,1210,1400,95,18
+Anker Power Strip (4 Port),SKU-1071,Office Supplies,Ryans Computers,420,500,117,7
+Razer HDMI Cable (5m),SKU-1072,Networking,Computer Village,190,250,11,18
+HP Power Strip (4 Port),SKU-1073,Accessories,Star Tech,820,1000,31,8
+HP LED Desk Lamp,SKU-1074,Accessories,Ryans Computers,4630,5550,197,14
+Type-C to USB Cable,SKU-1075,Accessories,Ryans Computers,700,800,156,15
+Flash Drive 64GB,SKU-1076,Networking,UCC,1390,1900,52,10
+A4Tech A4 Paper Pack (500 sheets),SKU-1077,Office Supplies,Ryans Computers,410,450,195,11
+Netgear Gaming Mouse,SKU-1078,Electronics,Ryans Computers,3350,4200,80,19
+HP Ethernet Cable (5m),SKU-1079,Electronics,Star Tech,720,950,166,5
+27-inch Monitor,SKU-1080,Office Supplies,Star Tech,34110,45250,15,15
+Asus Power Strip (4 Port),SKU-1081,Electronics,Computer Village,490,600,60,16
+Asus HDMI Cable (5m),SKU-1082,Networking,Techland,760,1050,48,16
+A4Tech Ethernet Cable (10m),SKU-1083,Storage,UCC,440,550,11,12
+Anker Wi-Fi Range Extender,SKU-1084,Networking,Ryans Computers,2900,3700,118,17
+Surge Protector,SKU-1085,Storage,UCC,1000,1200,119,20
+Anker Wireless Earbuds,SKU-1086,Networking,UCC,7720,9450,143,18
+Router Dual Band,SKU-1087,Networking,UCC,3300,4050,158,20
+Samsung HDMI Cable (5m),SKU-1088,Accessories,Computer Village,490,550,68,19
+HP 27-inch Monitor,SKU-1089,Storage,Techland,20730,27950,184,14
+Anker Type-C to USB Cable,SKU-1090,Storage,Techland,500,600,80,9
+Dell Headphones with Mic,SKU-1091,Office Supplies,Ryans Computers,6720,9150,105,17
+UPS 650VA,SKU-1092,Office Supplies,UCC,6950,8500,53,5
+Xiaomi LED Desk Lamp,SKU-1093,Networking,UCC,1380,1850,70,10
+UPS 650VA,SKU-1094,Office Supplies,Star Tech,4490,5500,196,16
+LED Desk Lamp,SKU-1095,Networking,Techland,1240,1700,31,19
+TP-Link Router Dual Band,SKU-1096,Electronics,Computer Village,3680,4950,117,9
+HP HDMI Cable (5m),SKU-1097,Electronics,UCC,240,300,113,17
+24-inch Monitor,SKU-1098,Electronics,Star Tech,20630,26700,58,12
+TP-Link Wi-Fi Range Extender,SKU-1099,Storage,Ryans Computers,3560,4350,105,6
+Samsung Ethernet Cable (5m),SKU-1100,Office Supplies,Star Tech,300,400,95,6

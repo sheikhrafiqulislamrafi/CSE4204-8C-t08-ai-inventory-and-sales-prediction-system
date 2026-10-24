@@ -1,0 +1,66 @@
+version: "3.9"
+
+services:
+  # ─── PostgreSQL ────────────────────────────────────────────────────────────
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: analytics
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d analytics"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ─── FastAPI Backend ───────────────────────────────────────────────────────
+  backend:
+    build:
+      context: ./backend
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql+psycopg://postgres:postgres@db:5432/analytics
+      SECRET_KEY: ${SECRET_KEY:-change-this-before-deploying}
+      ACCESS_TOKEN_EXPIRE_MINUTES: ${ACCESS_TOKEN_EXPIRE_MINUTES:-720}
+      CORS_ORIGINS: http://localhost:5173,http://localhost:8080
+      DELIVERY_CHARGE_PER_ORDER: ${DELIVERY_CHARGE_PER_ORDER:-100}
+      MAX_UPLOAD_MB: ${MAX_UPLOAD_MB:-15}
+      # Gemma 4 AI
+      GOOGLE_AI_STUDIO_KEY: ${GOOGLE_AI_STUDIO_KEY:-}
+      GEMMA_API_URL: ${GEMMA_API_URL:-}
+      GEMMA_API_KEY: ${GEMMA_API_KEY:-}
+      GEMMA_MODEL: ${GEMMA_MODEL:-gemma-4-9b-it}
+      HUGGINGFACE_API_KEY: ${HUGGINGFACE_API_KEY:-}
+      # Email
+      SMTP_HOST: ${SMTP_HOST:-smtp.gmail.com}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASSWORD: ${SMTP_PASSWORD:-}
+      REPORT_HOUR: ${REPORT_HOUR:-8}
+      REPORT_MINUTE: ${REPORT_MINUTE:-0}
+      # Google Sheets
+      GOOGLE_SERVICE_ACCOUNT_JSON: ${GOOGLE_SERVICE_ACCOUNT_JSON:-}
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  # ─── React Frontend (served by Nginx) ─────────────────────────────────────
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_API_URL: /api
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
